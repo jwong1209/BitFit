@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/foodTextView"
+        android:layout_width="170dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:hint="Food"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/calorieInputTextView"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
+        android:hint="Calories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toEndOf="@+id/foodTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/caloriesDisplayTextView"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="36dp"
+        android:text="Calories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintStart_toEndOf="@+id/foodTextView"
+        app:layout_constraintTop_toBottomOf="@+id/calorieInputTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
