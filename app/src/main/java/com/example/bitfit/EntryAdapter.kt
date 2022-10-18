@@ -44,7 +44,7 @@ class ArticleAdapter(private val context: Context, private val entries: List<Dis
         // TODO: Write a helper method to help set up the onBindViewHolder method
         fun bind(entry: DisplayEntry) {
             foodTV.text = entry.food
-            calorieInputTV.text = entry.calorie
+            calorieInputTV.text = entry.calorie.toString()
             /*
             Glide.with(context)
                 .load(article.mediaImageUrl)

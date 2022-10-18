@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 data class EntryEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(name = "food") val food: String?,
-    @ColumnInfo(name = "calorie") val calorie: String?
+    @ColumnInfo(name = "calorie") val calorie: Int?
 )

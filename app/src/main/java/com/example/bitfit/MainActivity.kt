@@ -1,18 +1,17 @@
 package com.example.bitfit
 
-import android.content.Intent
+import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.lifecycle.lifecycleScope
 import com.example.bitfit.databinding.ActivityMainBinding
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.Dispatchers.IO
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    val calorieList = ArrayList<Int>()
 
     private val articles = mutableListOf<DisplayEntry>()
     private lateinit var articlesRecyclerView: RecyclerView
@@ -23,9 +22,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        /*
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        val view = binding.root*/
+        setContentView(R.layout.activity_main)
+        /*
         enterDetailButton = findViewById(R.id.enterDetailButton)
         resetButton = findViewById(R.id.resetButton)
         articlesRecyclerView = findViewById(R.id.entries)
@@ -64,6 +65,34 @@ class MainActivity : AppCompatActivity() {
             lifecycleScope.launch (IO) {
                 (application as EntryApplication).db.articleDao().deleteAll()
             }
+        }*/
+        val fragmentManager: FragmentManager = supportFragmentManager
+
+        // define your fragments here
+        val listFragment: Fragment = ListFragment()
+        val overviewFragment: Fragment = OverviewFragment()
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        // handle navigation selection
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            lateinit var fragment: Fragment
+            when (item.itemId) {
+                R.id.nav_list -> fragment = listFragment
+                R.id.nav_overview -> fragment = overviewFragment
+            }
+            replaceFragment(fragment)
+            true
         }
+
+        // Set default selection
+        bottomNavigationView.selectedItemId = R.id.nav_list
+    }
+
+    private fun replaceFragment(xFragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.list_frame_layout, xFragment)
+        fragmentTransaction.commit()
     }
 }

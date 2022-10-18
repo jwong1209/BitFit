@@ -20,4 +20,14 @@ interface EntryDao {
 
     @Query("DELETE FROM entity_table")
     fun deleteAll()
+
+    @Query("SELECT AVG(calorie) FROM entity_table")
+    fun getAvg(): Float
+
+    @Query("SELECT MIN(calorie) FROM entity_table")
+    fun getMin(): Float
+
+    @Query("SELECT MAX(calorie) FROM entity_table")
+    fun getMax(): Float
+
 }

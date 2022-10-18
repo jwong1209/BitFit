@@ -24,10 +24,11 @@ class DetailActivity : AppCompatActivity() {
         enterCaloriesTV = findViewById(R.id.enterCalories)
         enterEntryButton = findViewById(R.id.enterEntryButton)
 
+
         enterEntryButton.setOnClickListener{
 
             lifecycleScope.launch (IO) {
-                (application as EntryApplication).db.articleDao().insert(EntryEntity(0.toLong(),enterFoodTV.text.toString(), enterCaloriesTV.text.toString()) )
+                (application as EntryApplication).db.articleDao().insert(EntryEntity(0.toLong(),enterFoodTV.text.toString(), Integer.parseInt(enterCaloriesTV.text.toString())))
             }
             finish()
         }
